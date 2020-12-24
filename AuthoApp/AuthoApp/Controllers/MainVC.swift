@@ -31,6 +31,15 @@ class MainVC: UIViewController {
         loginBTN.layer.cornerRadius = 6
         signUpBTN.layer.cornerRadius = 6
     }
+    
+    @IBAction func phoneNumberAct(_ sender: Any) {
+        let phoneNumberVC = storyboard?.instantiateViewController(identifier: "") // as!
+        
+        view.window?.rootViewController = phoneNumberVC
+        view.window?.makeKeyAndVisible()
+        // change it to phoneNumber VC
+    }
+    
 
 }
 

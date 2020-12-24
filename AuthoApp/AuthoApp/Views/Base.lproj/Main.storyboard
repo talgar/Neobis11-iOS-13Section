@@ -99,6 +99,9 @@
                                             <constraint firstAttribute="height" constant="60" id="hOQ-TB-b9m"/>
                                         </constraints>
                                         <state key="normal" title="Phone" image="phone"/>
+                                        <connections>
+                                            <action selector="phoneNumberAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oTg-ok-Ziw"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -269,7 +272,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZU-VW-bIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="893" y="788"/>
+            <point key="canvasLocation" x="1788" y="-199"/>
         </scene>
         <!--HomeVC-->
         <scene sceneID="nCQ-Hq-WGB">
@@ -278,6 +281,17 @@
                     <view key="view" contentMode="scaleToFill" id="lPR-Lv-IMf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jky-N9-FN7">
+                                <rect key="frame" x="139" y="328" width="162" height="169"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99942404029999998" green="0.98555368190000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="exmp:" destination="VZ1-BV-t1d" eventType="touchUpInside" id="eqR-vB-Fol"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="5VX-xE-cmd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -285,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xy-Ny-pwF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1739" y="74"/>
+            <point key="canvasLocation" x="2734.7826086956525" y="73.660714285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yTe-kG-McJ">

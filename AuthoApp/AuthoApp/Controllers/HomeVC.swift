@@ -12,4 +12,13 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func exmp(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "MainVC") as! MainVC
+        
+        view.window?.rootViewController = vc
+        view.window?.makeKeyAndVisible()
+        
+    }
+    
 }
