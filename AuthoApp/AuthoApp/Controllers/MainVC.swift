@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class MainVC: UIViewController {
 
@@ -44,6 +46,40 @@ class MainVC: UIViewController {
     }
 
     //MARK: - sign up with ...
+    @IBAction func facebookAct(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile","email"], from: self) { (result, error) in
+           
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let accessToken = AccessToken.current else {
+                print("Failed to get access token")
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { (user, error) in
+                if let error = error {
+                    print("Login error: \(error.localizedDescription)")
+                    self.showAlert(title: "Login error", message: error.localizedDescription)
+                    return
+                } else {
+                    print("Success")
+                    self.homeViewSegue()
+                }
+            }
+        }
+    }
+    
+    
+    @IBAction func googleAct(_ sender: Any) {
+    }
+    
+    
     @IBAction func phoneNumberAct(_ sender: Any) {
         let phoneNumberVC = storyboard?.instantiateViewController(identifier: "") // as!
         
