@@ -7,11 +7,10 @@
 
 import UIKit
 import Firebase
-
+import FirebaseAuth
 
 class SignUpVC: UIViewController {
 
-    
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -26,6 +25,9 @@ class SignUpVC: UIViewController {
         signInWithBTN.layer.cornerRadius = 6
     }
 
+    @IBAction func signInWithAct(_ sender: Any) {
+        mainViewSegue()
+    }
     
     @IBAction func signUpAct(_ sender: Any) {
         
@@ -38,13 +40,27 @@ class SignUpVC: UIViewController {
             let email = emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             let password = passwordTextfield.text?.trimmingCharacters(in: .whitespacesAndNewlines)
             
+            Auth.auth().createUser(withEmail: email!, password: password!) { (result, error) in
+                if error != nil {
+                    self.showAlert(title: "Notice", message: "Error creating user")
+                }
+                else {
+                    let dataBase = Firestore.firestore()
+                    dataBase.collection("users").addDocument(data: ["firstname" : firstName!,
+                                                                    "lastname" : lastName!,
+                                                                    "uid" : result!.user.uid]){(error) in
+                        
+                        if error != nil {
+                            self.showAlert(title: "Notice", message: "Error saving data")
+                        }
+                    }
+                    self.homeViewSegue()
+                }
+            }
         }
     }
-        
-
     
     func validateFields() -> String? {
-        
         // Check that all fields are filled in
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
             lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -53,26 +69,12 @@ class SignUpVC: UIViewController {
             
             return "Please fill in all fields"
         }
-        
         //Check if the password is secure
         let cleanedPassword = passwordTextfield.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if Utilities.isPasswordValid(cleanedPassword) == false {
-            
             return "Please make sure your password is at least 8 characters, contains a special character and a number"
         }
         return nil
     }
-    
-    
-    @IBAction func signInWithAct(_ sender: Any) {
-
-        let mainVC = storyboard?.instantiateViewController(identifier: "MainVC") as? MainVC
-        
-        view.window?.rootViewController = mainVC
-        view.window?.makeKeyAndVisible()
-    }
-    
-    
-
 }
