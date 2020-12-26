@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import GoogleSignIn
 import Firebase
+import FirebaseAuth
 
 extension UIViewController :  GIDSignInDelegate {
 
@@ -27,8 +28,29 @@ extension UIViewController :  GIDSignInDelegate {
         }
     }
     
+    //MARK: - phone verification
+    func verification(number: String){
+        let alert = UIAlertController(title: "Notice", message: "Is this your phone number? \n \(number)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Yes", style: .default) { (UIAlertAction) in
+            PhoneAuthProvider.provider().verifyPhoneNumber(number, uiDelegate: nil) {(verificationID, error) in
+                if error != nil {
+                    print("Error \(String(describing: error?.localizedDescription))")
+                } else {
+                    let vc = self.storyboard?.instantiateViewController(identifier: Constants.codeVC) as! CodeVC
+                    self.view.window?.rootViewController = vc
+                    self.view.window?.makeKeyAndVisible()
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     //MARK: - alert func
-    func showAlert(title:String,message:String) {
+    func showAlert(title:String, message:String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okBtn = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(okBtn)

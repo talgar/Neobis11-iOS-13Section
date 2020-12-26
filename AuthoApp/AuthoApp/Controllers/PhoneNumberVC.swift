@@ -21,13 +21,16 @@ class PhoneNumberVC: UIViewController {
     }
 
     @IBAction func sendAct(_ sender: Any) {
-        // write send func
-        let vc = storyboard?.instantiateViewController(identifier: Constants.codeVC) as! CodeVC
-        view.window?.rootViewController = vc
-        view.window?.makeKeyAndVisible()
+        let number = phoneNumberTextField.text
+        if number != "" {
+            verification(number: number!)
+        } else {
+            showAlert(title: "Notice", message: "Please enter your phone number!")
+        }
     }
     
     @IBAction func signInWithAct(_ sender: Any) {
         mainViewSegue()
     }
 }
+

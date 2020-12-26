@@ -30,7 +30,6 @@ class SignUpVC: UIViewController {
     }
     
     @IBAction func signUpAct(_ sender: Any) {
-        
         let error = validateFields()
         if error != nil {
             showAlert(title: "Notice", message: error!)
@@ -49,7 +48,6 @@ class SignUpVC: UIViewController {
                     dataBase.collection("users").addDocument(data: ["firstname" : firstName!,
                                                                     "lastname" : lastName!,
                                                                     "uid" : result!.user.uid]){(error) in
-                        
                         if error != nil {
                             self.showAlert(title: "Notice", message: "Error saving data")
                         }
