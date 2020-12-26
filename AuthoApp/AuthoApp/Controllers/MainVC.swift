@@ -9,6 +9,7 @@ import UIKit
 import FirebaseAuth
 import FBSDKCoreKit
 import FBSDKLoginKit
+import GoogleSignIn
 
 class MainVC: UIViewController {
 
@@ -21,6 +22,7 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         loginBTN.layer.cornerRadius = 6
         signUpBTN.layer.cornerRadius = 6
+        GIDSignIn.sharedInstance()?.delegate = self
     }
 
     //MARK: - login
@@ -29,7 +31,6 @@ class MainVC: UIViewController {
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            
             if error != nil {
                 self.showAlert(title: "Notice", message: error!.localizedDescription)
             } else {
@@ -45,7 +46,8 @@ class MainVC: UIViewController {
         view.window?.makeKeyAndVisible()
     }
 
-    //MARK: - sign up with ...
+    //MARK: - sign up with:
+    //MARK: - facebook
     @IBAction func facebookAct(_ sender: Any) {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile","email"], from: self) { (result, error) in
@@ -62,7 +64,7 @@ class MainVC: UIViewController {
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             
-            Auth.auth().signIn(with: credential) { (user, error) in
+            Auth.auth().signIn(with: credential, completion: { (user, error) in
                 if let error = error {
                     print("Login error: \(error.localizedDescription)")
                     self.showAlert(title: "Login error", message: error.localizedDescription)
@@ -71,23 +73,19 @@ class MainVC: UIViewController {
                     print("Success")
                     self.homeViewSegue()
                 }
-            }
+            })
         }
     }
     
-    
+    //MARK: - google
     @IBAction func googleAct(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.signIn()
     }
-    
-    
-    @IBAction func phoneNumberAct(_ sender: Any) {
-        let phoneNumberVC = storyboard?.instantiateViewController(identifier: "") // as!
-        
-        view.window?.rootViewController = phoneNumberVC
-        view.window?.makeKeyAndVisible()
-        // change it to phoneNumber VC
-    }
-    
 
+    //MARK: - phone number
+    @IBAction func phoneNumberAct(_ sender: Any) {
+        phoneViewSegue()
+    }
 }
 

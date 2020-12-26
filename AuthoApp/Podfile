@@ -16,6 +16,8 @@ target 'AuthoApp' do
   pod 'Bolts'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
-
+  
+  #Google
+  pod 'GoogleSignIn'
 
 end

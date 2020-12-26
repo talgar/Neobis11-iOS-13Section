@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		845FB50325956711009C4304 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845FB50225956711009C4304 /* Constants.swift */; };
+		8462F6BC2596D9A2008E9C25 /* PhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462F6BB2596D9A2008E9C25 /* PhoneNumberVC.swift */; };
+		8462F6C02596DA3F008E9C25 /* CodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462F6BF2596DA3F008E9C25 /* CodeVC.swift */; };
 		8465C4542594ED25000A5A38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8465C4532594ED25000A5A38 /* GoogleService-Info.plist */; };
-		8465C46425951677000A5A38 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465C46325951677000A5A38 /* Extentions.swift */; };
+		8465C46425951677000A5A38 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465C46325951677000A5A38 /* Extensions.swift */; };
 		8465C469259520EC000A5A38 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465C468259520EB000A5A38 /* Utilities.swift */; };
 		84A23E2C2593E06000B331A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A23E2B2593E06000B331A9 /* AppDelegate.swift */; };
 		84A23E2E2593E06000B331A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A23E2D2593E06000B331A9 /* SceneDelegate.swift */; };
@@ -27,8 +29,10 @@
 		3CF9FDBB52753B99CC9E15BB /* Pods-AuthoApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthoApp.debug.xcconfig"; path = "Target Support Files/Pods-AuthoApp/Pods-AuthoApp.debug.xcconfig"; sourceTree = "<group>"; };
 		63F54FEEBB741E3A83D3C49B /* Pods-AuthoApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AuthoApp.release.xcconfig"; path = "Target Support Files/Pods-AuthoApp/Pods-AuthoApp.release.xcconfig"; sourceTree = "<group>"; };
 		845FB50225956711009C4304 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8462F6BB2596D9A2008E9C25 /* PhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberVC.swift; sourceTree = "<group>"; };
+		8462F6BF2596DA3F008E9C25 /* CodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeVC.swift; sourceTree = "<group>"; };
 		8465C4532594ED25000A5A38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8465C46325951677000A5A38 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		8465C46325951677000A5A38 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8465C468259520EB000A5A38 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		84A23E282593E06000B331A9 /* AuthoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A23E2B2593E06000B331A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,12 +66,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8465C4662595167F000A5A38 /* Extentions */ = {
+		8462F6B62596CB09008E9C25 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				8465C46325951677000A5A38 /* Extentions.swift */,
+				84A23E2B2593E06000B331A9 /* AppDelegate.swift */,
 			);
-			path = Extentions;
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		8462F6B82596CB1A008E9C25 /* SceneDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				84A23E2D2593E06000B331A9 /* SceneDelegate.swift */,
+			);
+			path = SceneDelegate;
+			sourceTree = "<group>";
+		};
+		8465C4662595167F000A5A38 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8465C46325951677000A5A38 /* Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8465C46B259520F6000A5A38 /* Helpers */ = {
@@ -100,10 +120,10 @@
 		84A23E2A2593E06000B331A9 /* AuthoApp */ = {
 			isa = PBXGroup;
 			children = (
-				84A23E2B2593E06000B331A9 /* AppDelegate.swift */,
-				84A23E2D2593E06000B331A9 /* SceneDelegate.swift */,
+				8462F6B62596CB09008E9C25 /* AppDelegate */,
+				8462F6B82596CB1A008E9C25 /* SceneDelegate */,
 				8465C46B259520F6000A5A38 /* Helpers */,
-				8465C4662595167F000A5A38 /* Extentions */,
+				8465C4662595167F000A5A38 /* Extensions */,
 				84A23E462593E14C00B331A9 /* Controllers */,
 				84A23E482593E16700B331A9 /* Views */,
 				84A23E342593E06200B331A9 /* Assets.xcassets */,
@@ -119,6 +139,8 @@
 				84A23E2F2593E06000B331A9 /* MainVC.swift */,
 				84A23E402593E11D00B331A9 /* SignUpVC.swift */,
 				84A23E4B2593EC1700B331A9 /* HomeVC.swift */,
+				8462F6BB2596D9A2008E9C25 /* PhoneNumberVC.swift */,
+				8462F6BF2596DA3F008E9C25 /* CodeVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -153,6 +175,7 @@
 				84A23E252593E06000B331A9 /* Frameworks */,
 				84A23E262593E06000B331A9 /* Resources */,
 				DA1DF102A0846A9C5971B4AD /* [CP] Embed Pods Frameworks */,
+				FCDB85C599367CE4D81E92AC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,6 +272,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AuthoApp/Pods-AuthoApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FCDB85C599367CE4D81E92AC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AuthoApp/Pods-AuthoApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AuthoApp/Pods-AuthoApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AuthoApp/Pods-AuthoApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,11 +299,13 @@
 				84A23E412593E11D00B331A9 /* SignUpVC.swift in Sources */,
 				84A23E302593E06000B331A9 /* MainVC.swift in Sources */,
 				8465C469259520EC000A5A38 /* Utilities.swift in Sources */,
-				8465C46425951677000A5A38 /* Extentions.swift in Sources */,
+				8465C46425951677000A5A38 /* Extensions.swift in Sources */,
 				84A23E2C2593E06000B331A9 /* AppDelegate.swift in Sources */,
 				84A23E4C2593EC1700B331A9 /* HomeVC.swift in Sources */,
 				84A23E2E2593E06000B331A9 /* SceneDelegate.swift in Sources */,
 				845FB50325956711009C4304 /* Constants.swift in Sources */,
+				8462F6BC2596D9A2008E9C25 /* PhoneNumberVC.swift in Sources */,
+				8462F6C02596DA3F008E9C25 /* CodeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
