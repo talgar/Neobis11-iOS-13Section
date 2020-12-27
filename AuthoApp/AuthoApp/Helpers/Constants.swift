@@ -16,5 +16,4 @@ struct Constants {
     static let signUpVC = "SignUpVC"
     static let phoneNumberVC = "PhoneNumberVC"
     static let codeVC = "CodeVC"
-
 }

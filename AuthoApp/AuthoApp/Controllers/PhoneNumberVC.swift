@@ -18,8 +18,11 @@ class PhoneNumberVC: UIViewController {
         super.viewDidLoad()
         sendBTN.layer.cornerRadius = 6
         signInWithBTN.layer.cornerRadius = 6
+        hideKeyboardWhenTappedAround()
+        phoneNumberTextField.becomeFirstResponder()
     }
 
+    //MARK: - send number
     @IBAction func sendAct(_ sender: Any) {
         let number = phoneNumberTextField.text
         if number != "" {
@@ -29,6 +32,7 @@ class PhoneNumberVC: UIViewController {
         }
     }
     
+    //MARK: - sign in with (backBTN)
     @IBAction func signInWithAct(_ sender: Any) {
         mainViewSegue()
     }

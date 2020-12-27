@@ -11,10 +11,11 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
 
-class MainVC: UIViewController {
+class MainVC: UIViewController , UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var loginBTN: UIButton!
     @IBOutlet weak var signUpBTN: UIButton!
     
@@ -23,8 +24,9 @@ class MainVC: UIViewController {
         loginBTN.layer.cornerRadius = 6
         signUpBTN.layer.cornerRadius = 6
         GIDSignIn.sharedInstance()?.delegate = self
+        hideKeyboardWhenTappedAround()
     }
-
+    
     //MARK: - login
     @IBAction func loginAct(_ sender: Any) {
         let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -86,6 +88,16 @@ class MainVC: UIViewController {
     //MARK: - phone number
     @IBAction func phoneNumberAct(_ sender: Any) {
         phoneViewSegue()
+    }
+    
+    //MARK: - textFields should return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            passwordTextField.resignFirstResponder()
+        }
+        return true
     }
 }
 

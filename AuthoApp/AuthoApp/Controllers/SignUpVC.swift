@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUpVC: UIViewController {
+class SignUpVC: UIViewController , UITextFieldDelegate {
 
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -23,12 +23,10 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         signUpBTN.layer.cornerRadius = 6
         signInWithBTN.layer.cornerRadius = 6
-    }
-
-    @IBAction func signInWithAct(_ sender: Any) {
-        mainViewSegue()
+        hideKeyboardWhenTappedAround()
     }
     
+    //MARK: - sign up
     @IBAction func signUpAct(_ sender: Any) {
         let error = validateFields()
         if error != nil {
@@ -58,6 +56,7 @@ class SignUpVC: UIViewController {
         }
     }
     
+    //MARK: - sign up func
     func validateFields() -> String? {
         // Check that all fields are filled in
         if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" ||
@@ -74,5 +73,24 @@ class SignUpVC: UIViewController {
             return "Please make sure your password is at least 8 characters, contains a special character and a number"
         }
         return nil
+    }
+    
+    //MARK: - sign in with (backBTN)
+    @IBAction func signInWithAct(_ sender: Any) {
+        mainViewSegue()
+    }
+    
+    //MARK: - textFields should return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstNameTextField {
+            lastNameTextField.becomeFirstResponder()
+        } else if textField == lastNameTextField {
+            emailTextField.becomeFirstResponder()
+        } else if textField == emailTextField {
+            passwordTextfield.becomeFirstResponder()
+        } else {
+            passwordTextfield.resignFirstResponder()
+        }
+        return true
     }
 }

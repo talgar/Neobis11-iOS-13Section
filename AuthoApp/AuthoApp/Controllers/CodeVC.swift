@@ -18,15 +18,22 @@ class CodeVC: UIViewController {
         super.viewDidLoad()
         logInBTN.layer.cornerRadius = 6
         backBTN.layer.cornerRadius = 6
+        hideKeyboardWhenTappedAround()
+        codeTextField.becomeFirstResponder()
     }
     
+    //MARK: - login with phone number (code)
     @IBAction func logInAct(_ sender: Any) {
-        //write func to log in
-        homeViewSegue()// inside func 
+        let code = codeTextField.text
+        if code != "" {
+            authorization(code: code!)
+        } else {
+            showAlert(title: "Notice", message: "Please enter the code!")
+        }
     }
     
+    //MARK: - backBTN
     @IBAction func backAct(_ sender: Any) {
         phoneViewSegue()
     }
-    
 }
